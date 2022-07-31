@@ -1,10 +1,13 @@
 package im.syf.geha.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import im.syf.geha.Geha
 import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ActivitySearchBinding
+import im.syf.geha.ui.profile.ProfileActivity
+import im.syf.geha.ui.profile.ProfileActivity.Companion.EXTRA_USER_KEY
 
 class SearchActivity : AppCompatActivity() {
 
@@ -32,5 +35,9 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun navigate(user: User) {
+        val intent = Intent(this, ProfileActivity::class.java).apply {
+            putExtra(EXTRA_USER_KEY, user)
+        }
+        startActivity(intent)
     }
 }

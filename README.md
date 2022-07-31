@@ -6,7 +6,7 @@ Consume GitHub REST API, well, eventually.
 
 - Kotlin:
     - Extension function
-    - Data class
+    - Data class: implement parcelable interface with Parcelize plugin
     - Companion object
     - `@Volatile` annotation
     - Synchronized access
@@ -20,3 +20,5 @@ Consume GitHub REST API, well, eventually.
 - View binding
 - RecyclerView: ListAdapter (with item diffing)
 - String resources with parameters
+- Use `Intent`:
+    - explicitly, to navigate and pass data between different activities
