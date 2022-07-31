@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">geha</string>
+    <string name="avatar_of_user">Avatar image of %s</string>
 </resources>
