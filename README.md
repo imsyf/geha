@@ -24,4 +24,5 @@ Consume GitHub REST API, well, eventually.
 - ShapeableImageView: gives the option to clip ImageView into various shape, e.g.: circular
 - String resources with parameters
 - Use `Intent`:
-    - explicitly, to navigate and pass data between different activities
+    - explicitly, to navigate and pass data between different activities with a defined parent-child
+      relationship between them

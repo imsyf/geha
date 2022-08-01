@@ -25,6 +25,9 @@ class ProfileActivity : AppCompatActivity() {
         val profile: UserProfile = (application as Geha).dummyDataSource.dummyUsers[user.id]
             .let(DummyUser::toUserProfile)
 
+        // Enable up button for backward navigation
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Customize toolbar title
         title = profile.username
 
