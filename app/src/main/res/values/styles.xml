@@ -5,4 +5,30 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="TextAppearance.Geha.Title" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.Geha.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Geha.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Widget.Geha.TextViewValue" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+    </style>
+
+    <style name="Widget.Geha.TextViewLabel" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">?attr/textAppearanceCaption</item>
+    </style>
+
+    <style name="Widget.Geha.TextButtonIcon" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconSize">12dp</item>
+    </style>
+
 </resources>

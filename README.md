@@ -29,3 +29,4 @@ Consume GitHub REST API, well, eventually.
     - explicitly, to navigate and pass data between different activities with a defined parent-child
       relationship between them
     - implicitly, to share plain formatted text to different installed applications
+- Define styles resources
