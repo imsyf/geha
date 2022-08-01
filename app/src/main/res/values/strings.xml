@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">geha</string>
     <string name="avatar_of_user">Avatar image of %s</string>
+    <string name="save">Save</string>
+    <string name="share">Share</string>
+    <string name="repository">Repository</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
 </resources>

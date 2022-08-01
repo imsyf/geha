@@ -2,17 +2,34 @@ package im.syf.geha.ui.profile
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import im.syf.geha.Geha
 import im.syf.geha.R
+import im.syf.geha.data.DummyUser
+import im.syf.geha.databinding.ActivityProfileBinding
 import im.syf.geha.ui.search.User
 
 class ProfileActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+
+        // Inflate layout with data binding
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
 
         // Retrieve argument passed via intent
         val user: User = requireNotNull(intent.getParcelableExtra(EXTRA_USER_KEY))
+        // Get the more appropriately-shaped data model for this screen
+        val profile: UserProfile = (application as Geha).dummyDataSource.dummyUsers[user.id]
+            .let(DummyUser::toUserProfile)
+
+        // Customize toolbar title
+        title = profile.username
+
+        // Bind data model to the layout
+        binding.profile = profile
     }
 
     companion object {

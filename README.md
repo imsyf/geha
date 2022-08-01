@@ -18,7 +18,9 @@ Consume GitHub REST API, well, eventually.
 - Android resources annotation
 - Custom Android application class to hold shared instances
 - View binding
+- Data binding
 - RecyclerView: ListAdapter (with item diffing)
+- CoordinatorLayout
 - String resources with parameters
 - Use `Intent`:
     - explicitly, to navigate and pass data between different activities
