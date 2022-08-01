@@ -14,6 +14,7 @@ Consume GitHub REST API, well, eventually.
     - Data model mapping
     - Lambda
     - Method reference
+    - Try-catch block
 - Load string array resources
 - Android resources annotation
 - Custom Android application class to hold shared instances
@@ -22,7 +23,9 @@ Consume GitHub REST API, well, eventually.
 - RecyclerView: ListAdapter (with item diffing)
 - CoordinatorLayout
 - ShapeableImageView: gives the option to clip ImageView into various shape, e.g.: circular
+- Snackbar: displays error messages
 - String resources with parameters
 - Use `Intent`:
     - explicitly, to navigate and pass data between different activities with a defined parent-child
       relationship between them
+    - implicitly, to share plain formatted text to different installed applications

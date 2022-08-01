@@ -1,8 +1,11 @@
 package im.syf.geha.ui.profile
 
+import android.content.ActivityNotFoundException
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
 import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.data.DummyUser
@@ -31,8 +34,24 @@ class ProfileActivity : AppCompatActivity() {
         // Customize toolbar title
         title = profile.username
 
+        binding.shareButton.setOnClickListener { onShare(profile) }
+
         // Bind data model to the layout
         binding.profile = profile
+    }
+
+    private fun onShare(profile: UserProfile) {
+        val intentBuilder = ShareCompat.IntentBuilder(this)
+            .setType("text/plain")
+            .setText(getString(R.string.share_text, profile.name, profile.username))
+
+        try {
+            intentBuilder.startChooser()
+        } catch (e: ActivityNotFoundException) {
+            Snackbar.make(binding.root, R.string.sharing_failed, Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(R.string.dismiss)) {}
+                .show()
+        }
     }
 
     companion object {

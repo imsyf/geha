@@ -6,4 +6,7 @@
     <string name="repository">Repository</string>
     <string name="following">Following</string>
     <string name="followers">Followers</string>
+    <string name="sharing_failed">Failed to initiate sharing chooser</string>
+    <string name="share_text">Check out GitHub profile of %1$s (%2$s) here https://github.com/%2$s</string>
+    <string name="dismiss">Dismiss</string>
 </resources>
