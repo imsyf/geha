@@ -21,6 +21,7 @@ Consume GitHub REST API, well, eventually.
 - Data binding
 - RecyclerView: ListAdapter (with item diffing)
 - CoordinatorLayout
+- ShapeableImageView: gives the option to clip ImageView into various shape, e.g.: circular
 - String resources with parameters
 - Use `Intent`:
     - explicitly, to navigate and pass data between different activities

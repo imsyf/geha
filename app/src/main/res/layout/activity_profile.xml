@@ -26,7 +26,7 @@
                 android:background="?attr/colorSurface"
                 android:paddingVertical="16dp">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/avatar_image_view"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -35,6 +35,7 @@
                     android:src="@{context.getDrawable(profile.avatar)}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/CircularShape"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
