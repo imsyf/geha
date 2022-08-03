@@ -1,3 +1,5 @@
+![ic_launcher_geha](app/src/main/res/mipmap-xhdpi/ic_launcher_geha_round.png?raw=true) ![ic_launcher_geha](https://user-images.githubusercontent.com/29587914/182734052-23e204a1-4a95-4911-81df-270af408f08c.png)
+
 # geha
 
 Consume GitHub REST API, well, eventually.
@@ -33,3 +35,4 @@ Consume GitHub REST API, well, eventually.
     - implicitly, to share plain formatted text to different installed applications
 - Define styles resources
 - Customize material brand theme colors
+- Customize app icon
