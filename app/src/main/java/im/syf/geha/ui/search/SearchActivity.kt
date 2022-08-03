@@ -3,6 +3,7 @@ package im.syf.geha.ui.search
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import im.syf.geha.Geha
 import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ActivitySearchBinding
@@ -14,6 +15,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         // Inflate layout with view binding

@@ -36,3 +36,31 @@ Consume GitHub REST API, well, eventually.
 - Define styles resources
 - Customize material brand theme colors
 - Customize app icon
+- Display splash screen with AndroidX SplashScreen compat library
+
+## Result
+
+<table>
+  <tr>
+    <th></th>
+    <th>Nexus 4 API 21</th>
+    <th>Redmi Note 4 API 24</th>
+  </tr>
+  <tr>
+   <td rowspan="2">Splash screen</td>
+    <td>
+      <img src="https://user-images.githubusercontent.com/29587914/182735890-2cf4f1dc-5509-42a8-9f86-e93e73cc5eeb.png" />
+    </td>
+    <td>
+      <img src="https://user-images.githubusercontent.com/29587914/182735902-48c0ab09-b689-4bed-a181-2ea71b8368c6.jpg" />
+    </td>
+  </tr>
+ <tr>
+    <td>
+      <video src="https://user-images.githubusercontent.com/29587914/182735896-3cfeb6b1-a702-4e46-9a8e-95a8c73fb928.webm"></video>
+    </td>
+    <td>
+      <video src="https://user-images.githubusercontent.com/29587914/182735906-fed0eb60-6b46-460b-b646-bc69fc287893.mp4"></video>
+    </td>
+  </tr>
+</table>

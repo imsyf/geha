@@ -16,7 +16,8 @@
         tools:targetApi="32">
         <activity
             android:name=".ui.search.SearchActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Geha.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
