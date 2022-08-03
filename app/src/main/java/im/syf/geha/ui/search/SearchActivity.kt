@@ -1,10 +1,12 @@
 package im.syf.geha.ui.search
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import im.syf.geha.Geha
+import im.syf.geha.R
 import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ActivitySearchBinding
 import im.syf.geha.ui.profile.ProfileActivity
@@ -15,7 +17,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        setupSplashScreen()
         super.onCreate(savedInstanceState)
 
         // Inflate layout with view binding
@@ -41,5 +43,13 @@ class SearchActivity : AppCompatActivity() {
             putExtra(EXTRA_USER_KEY, user)
         }
         startActivity(intent)
+    }
+
+    private fun setupSplashScreen() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            installSplashScreen()
+        } else {
+            setTheme(R.style.Theme_Geha)
+        }
     }
 }

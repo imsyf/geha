@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Geha.SplashScreen" parent="Theme.SplashScreen.IconBackground">
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen_logo</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/red_900</item>
-        <item name="windowSplashScreenBackground">@color/red_200</item>
-        <item name="postSplashScreenTheme">@style/Theme.Geha</item>
+    <style name="Theme.Geha.SplashScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/fallback_background</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
 </resources>

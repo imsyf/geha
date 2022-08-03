@@ -36,7 +36,8 @@ Consume GitHub REST API, well, eventually.
 - Define styles resources
 - Customize material brand theme colors
 - Customize app icon
-- Display splash screen with AndroidX SplashScreen compat library
+- Display splash screen with AndroidX SplashScreen compat library (on API > 23) and falling back to
+  other method on older API, utilizing resource qualifiers
 
 ## Result
 
@@ -49,7 +50,7 @@ Consume GitHub REST API, well, eventually.
   <tr>
    <td rowspan="2">Splash screen</td>
     <td>
-      <img src="https://user-images.githubusercontent.com/29587914/182735890-2cf4f1dc-5509-42a8-9f86-e93e73cc5eeb.png" />
+      <img src="https://user-images.githubusercontent.com/29587914/182738849-34049d9d-6d4b-430b-a366-715ba9167bac.png" />
     </td>
     <td>
       <img src="https://user-images.githubusercontent.com/29587914/182735902-48c0ab09-b689-4bed-a181-2ea71b8368c6.jpg" />
@@ -57,7 +58,7 @@ Consume GitHub REST API, well, eventually.
   </tr>
  <tr>
     <td>
-      <video src="https://user-images.githubusercontent.com/29587914/182735896-3cfeb6b1-a702-4e46-9a8e-95a8c73fb928.webm"></video>
+      <video src="https://user-images.githubusercontent.com/29587914/182738896-a6326819-a3f5-45ed-8c7b-c18b86182333.webm"></video>
     </td>
     <td>
       <video src="https://user-images.githubusercontent.com/29587914/182735906-fed0eb60-6b46-460b-b646-bc69fc287893.mp4"></video>
