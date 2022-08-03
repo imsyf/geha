@@ -38,6 +38,8 @@ Consume GitHub REST API, well, eventually.
 - Customize app icon
 - Display splash screen with AndroidX SplashScreen compat library (on API > 23) and falling back to
   other method on older API, utilizing resource qualifiers
+- SearchView
+- Inflate option menu
 
 ## Result
 
