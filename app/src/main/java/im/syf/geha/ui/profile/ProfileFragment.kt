@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import im.syf.geha.Geha
 import im.syf.geha.R
-import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -21,6 +23,15 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProfileViewModel by viewModels {
+        viewModelFactory {
+            initializer {
+                val app = activity?.application as Geha
+                ProfileViewModel(args.user.id, app.dummyDataSource)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,13 +45,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Get the more appropriately-shaped data model for this screen
-        val userProfile: UserProfile = (activity?.application as Geha).dummyDataSource
-            .dummyUsers[args.user.id]
-            .let(DummyUser::toUserProfile)
-
         // Define tab items
-        val items: List<PageItem> = with(userProfile) {
+        val items: List<PageItem> = with(viewModel.userProfile) {
             listOf(
                 RepositoryPage(username, repository.toInt()),
                 FollowingPage(username, following.toInt()),
@@ -50,7 +56,7 @@ class ProfileFragment : Fragment() {
 
         with(binding) {
             // Bind data model to the layout
-            profile = userProfile
+            profile = viewModel.userProfile
 
             // Set up view pager and tab layout
             pager.adapter = ProfilePagerAdapter(this@ProfileFragment, items)
@@ -58,7 +64,7 @@ class ProfileFragment : Fragment() {
                 tab.text = getString(items[position].title)
             }.attach()
 
-            shareButton.setOnClickListener { onShare(userProfile) }
+            shareButton.setOnClickListener { onShare(viewModel.userProfile) }
         }
     }
 
