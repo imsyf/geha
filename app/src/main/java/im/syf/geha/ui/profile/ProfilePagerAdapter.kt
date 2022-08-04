@@ -1,16 +1,13 @@
 package im.syf.geha.ui.profile
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import im.syf.geha.ui.profile.list.ListFragment
 
 class ProfilePagerAdapter(
-    fragmentManager: FragmentManager,
-    lifecycle: Lifecycle,
+    fragment: Fragment,
     private val items: List<PageItem>,
-) : FragmentStateAdapter(fragmentManager, lifecycle) {
+) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = items.size
 
