@@ -25,11 +25,11 @@ class SearchViewModel(
         private val dataSource: DummyDataSource,
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return SearchViewModel(dataSource) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            @Suppress("UNCHECKED_CAST")
+            return when (modelClass) {
+                SearchViewModel::class.java -> SearchViewModel(dataSource)
+                else -> throw IllegalArgumentException("Unknown class $modelClass")
+            } as T
         }
     }
 }
