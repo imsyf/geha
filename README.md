@@ -39,7 +39,7 @@ Consume GitHub REST API, well, eventually.
 - Display splash screen with AndroidX SplashScreen compat library (on API > 23) and falling back to
   other method on older API, utilizing resource qualifiers
 - SearchView
-- Inflate option menu
+- Inflate option menu with the new MenuProvider API
 - Single activity architecture
 - Jetpack Navigation components with Safe Args
 - Fragment
