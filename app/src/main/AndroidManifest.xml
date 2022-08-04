@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Geha"
         tools:targetApi="32">
         <activity
-            android:name=".ui.search.SearchActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Geha.SplashScreen">
             <intent-filter>
@@ -23,11 +23,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.profile.ProfileActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.search.SearchActivity" />
         </activity>
     </application>
 

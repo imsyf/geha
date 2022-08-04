@@ -40,6 +40,9 @@ Consume GitHub REST API, well, eventually.
   other method on older API, utilizing resource qualifiers
 - SearchView
 - Inflate option menu
+- Single activity architecture
+- Jetpack Navigation components with Safe Args
+- Fragment
 
 ## Result
 
