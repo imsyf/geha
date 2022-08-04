@@ -11,11 +11,11 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import im.syf.geha.Geha
 import im.syf.geha.R
-import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ViewListBinding
 
 class SearchFragment : Fragment() {
@@ -23,12 +23,12 @@ class SearchFragment : Fragment() {
     private var _binding: ViewListBinding? = null
     private val binding get() = _binding!!
 
-    private val listAdapter = UserListAdapter(::navigate)
-
-    // Get list of dummy users, then map them to this screen data model
-    private val users: List<User> by lazy {
-        (activity?.application as Geha).dummyDataSource.dummyUsers.map(DummyUser::toUser)
+    private val viewModel: SearchViewModel by viewModels {
+        val app = activity?.application as Geha
+        SearchViewModel.Factory(app.dummyDataSource)
     }
+
+    private val listAdapter = UserListAdapter(::navigate)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +48,7 @@ class SearchFragment : Fragment() {
             setHasFixedSize(true)
         }
 
-        listAdapter.submitList(users)
+        listAdapter.submitList(viewModel.users)
     }
 
     private fun navigate(user: User) {
@@ -87,7 +87,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                listAdapter.submitList(users)
+                listAdapter.submitList(viewModel.users)
                 return true
             }
         })
@@ -96,17 +96,7 @@ class SearchFragment : Fragment() {
         // Match in any part of user properties displayed on screen
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                val q = "$query"
-
-                val result = users.filter {
-                    val name = it.name.contains(q, true)
-                    val username = it.username.contains(q, true)
-                    val location = it.location.contains(q, true)
-
-                    name || username || location
-                }
-
-                listAdapter.submitList(result)
+                listAdapter.submitList(viewModel.onQuery("$query"))
                 searchView.clearFocus()
                 return true
             }

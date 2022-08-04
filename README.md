@@ -43,6 +43,7 @@ Consume GitHub REST API, well, eventually.
 - Single activity architecture
 - Jetpack Navigation components with Safe Args
 - Fragment
+- ViewModel and its factory
 
 ## Result
 
