@@ -13,7 +13,6 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.findNavController
@@ -29,9 +28,7 @@ class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by viewModels {
         viewModelFactory {
             initializer {
-                val app = requireNotNull(
-                    get(ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY)
-                ) as Geha
+                val app = activity?.application as Geha
                 SearchViewModel(app.dummyDataSource)
             }
         }
