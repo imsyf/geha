@@ -13,6 +13,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.findNavController
 import im.syf.geha.Geha
 import im.syf.geha.R
@@ -24,8 +27,14 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: SearchViewModel by viewModels {
-        val app = activity?.application as Geha
-        SearchViewModel.Factory(app.dummyDataSource)
+        viewModelFactory {
+            initializer {
+                val app = requireNotNull(
+                    get(ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY)
+                ) as Geha
+                SearchViewModel(app.dummyDataSource)
+            }
+        }
     }
 
     private val listAdapter = UserListAdapter(::navigate)
