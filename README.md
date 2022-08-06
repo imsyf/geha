@@ -21,7 +21,8 @@ Consume GitHub REST API, well, eventually.
 - View binding
 - Data binding
 - RecyclerView: ListAdapter (with item diffing)
-- CoordinatorLayout
+- CoordinatorLayout: to coordinate scrolling behaviour between its children
+- TabLayout & ViewPager2
 - ShapeableImageView: gives the option to clip ImageView into various shape, e.g.: circular
 - Snackbar: displays error messages
 - String resources with parameters
