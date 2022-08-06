@@ -31,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // Set up view pager
         val items: List<PageItem> = listOf(
+            TextPage("abc"),
             NothingPage,
         )
         binding.pager.adapter = ProfilePagerAdapter(supportFragmentManager, lifecycle, items)
