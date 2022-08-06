@@ -11,6 +11,7 @@ import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ActivityProfileBinding
+import im.syf.geha.ui.profile.parcelable.SomeParcelable
 import im.syf.geha.ui.search.User
 
 class ProfileActivity : AppCompatActivity() {
@@ -31,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // Set up view pager
         val items: List<PageItem> = listOf(
+            ParcelablePage(SomeParcelable(false, 123, "abc")),
             TextPage("abc"),
             NothingPage,
         )
