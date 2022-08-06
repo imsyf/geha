@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.data.DummyUser
@@ -27,6 +28,16 @@ class ProfileActivity : AppCompatActivity() {
         // Get the more appropriately-shaped data model for this screen
         val profile: UserProfile = (application as Geha).dummyDataSource.dummyUsers[user.id]
             .let(DummyUser::toUserProfile)
+
+        // Set up view pager
+        val items: List<PageItem> = listOf(
+        )
+        binding.pager.adapter = ProfilePagerAdapter(supportFragmentManager, lifecycle, items)
+
+        // Set up tab layout
+        TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
+            tab.text = getString(items[position].title)
+        }.attach()
 
         // Enable up button for backward navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

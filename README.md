@@ -15,6 +15,7 @@ Consume GitHub REST API, well, eventually.
     - Lambda
     - Method reference
     - Try-catch block
+    - Sealed class
 - Load string array resources
 - Android resources annotation
 - Custom Android application class to hold shared instances
