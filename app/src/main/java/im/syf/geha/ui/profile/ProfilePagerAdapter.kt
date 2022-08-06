@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import im.syf.geha.ui.profile.nothing.NothingFragment
 
 class ProfilePagerAdapter(
     fragmentManager: FragmentManager,
@@ -14,5 +15,6 @@ class ProfilePagerAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun createFragment(position: Int): Fragment = when (val page = items[position]) {
+        NothingPage -> NothingFragment()
     }
 }
