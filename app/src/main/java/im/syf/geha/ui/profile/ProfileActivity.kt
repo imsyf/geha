@@ -11,7 +11,9 @@ import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.data.DummyUser
 import im.syf.geha.databinding.ActivityProfileBinding
-import im.syf.geha.ui.profile.parcelable.SomeParcelable
+import im.syf.geha.ui.profile.list.FollowersListType
+import im.syf.geha.ui.profile.list.FollowingListType
+import im.syf.geha.ui.profile.list.RepositoryListType
 import im.syf.geha.ui.search.User
 
 class ProfileActivity : AppCompatActivity() {
@@ -32,9 +34,9 @@ class ProfileActivity : AppCompatActivity() {
 
         // Set up view pager
         val items: List<PageItem> = listOf(
-            ParcelablePage(SomeParcelable(false, 123, "abc")),
-            TextPage("abc"),
-            NothingPage,
+            RepositoryPage(RepositoryListType(profile.username, profile.repository.toInt())),
+            FollowingPage(FollowingListType(profile.username, profile.following.toInt())),
+            FollowersPage(FollowersListType(profile.username, profile.followers.toInt())),
         )
         binding.pager.adapter = ProfilePagerAdapter(supportFragmentManager, lifecycle, items)
 
