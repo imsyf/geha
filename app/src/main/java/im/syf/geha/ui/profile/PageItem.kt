@@ -9,13 +9,22 @@ import im.syf.geha.ui.profile.list.RepositoryListType
 sealed class PageItem(@StringRes val title: Int)
 
 class RepositoryPage(
-    val repository: RepositoryListType,
-) : PageItem(R.string.repository)
+    username: String,
+    itemCount: Int,
+) : PageItem(R.string.repository) {
+    val repository = RepositoryListType(username, itemCount)
+}
 
 class FollowingPage(
-    val following: FollowingListType,
-) : PageItem(R.string.following)
+    username: String,
+    itemCount: Int,
+) : PageItem(R.string.following) {
+    val following = FollowingListType(username, itemCount)
+}
 
 class FollowersPage(
-    val followers: FollowersListType,
-) : PageItem(R.string.followers)
+    username: String,
+    itemCount: Int,
+) : PageItem(R.string.followers) {
+    val followers = FollowersListType(username, itemCount)
+}
