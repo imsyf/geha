@@ -8,7 +8,7 @@ Consume GitHub REST API, well, eventually.
 
 - Kotlin:
     - Extension function
-    - Data class: implement parcelable interface with Parcelize plugin
+    - Data class: implement parcelable interface with Parcelize plugin, copy method
     - Companion object
     - `@Volatile` annotation
     - Synchronized access
@@ -18,6 +18,7 @@ Consume GitHub REST API, well, eventually.
     - Method reference
     - Try-catch block
     - Sealed class
+    - Coroutines: suspend function
 - Load string array resources
 - Android resources annotation
 - Custom Android application class to hold shared instances
