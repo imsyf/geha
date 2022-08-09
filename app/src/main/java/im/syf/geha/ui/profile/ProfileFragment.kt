@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.databinding.FragmentProfileBinding
+import im.syf.geha.ui.profile.ProfileViewModel.State
 
 class ProfileFragment : Fragment() {
 
@@ -44,9 +45,16 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.state.observe(viewLifecycleOwner, ::render)
+    }
 
-        // Bind data model to the layout
-        binding.bindData(viewModel.userProfile)
+    private fun render(state: State) {
+        when (state) {
+            is State.Success -> {
+                // Bind data model to the layout
+                binding.bindData(state.userProfile)
+            }
+        }
     }
 
     private fun FragmentProfileBinding.bindData(profile: UserProfile) {

@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.databinding.ViewListBinding
+import im.syf.geha.ui.search.SearchViewModel.State
 
 class SearchFragment : Fragment() {
 
@@ -48,13 +49,17 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupOptionsMenu()
+        binding.recyclerView.setHasFixedSize(true)
+        viewModel.state.observe(viewLifecycleOwner, ::render)
+    }
 
-        with(binding.recyclerView) {
-            adapter = listAdapter
-            setHasFixedSize(true)
+    private fun render(state: State) {
+        when (state) {
+            is State.Success -> {
+                binding.recyclerView.adapter = listAdapter
+                listAdapter.submitList(state.users)
+            }
         }
-
-        listAdapter.submitList(viewModel.users)
     }
 
     private fun navigate(user: User) {
@@ -86,23 +91,23 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupSearchView(search: MenuItem) {
-        // Re-display all data when search view is closed
+        // Reset state back to its initial when search view is closed
         search.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
                 return true
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                listAdapter.submitList(viewModel.users)
+                viewModel.reset()
                 return true
             }
         })
 
         val searchView = search.actionView as SearchView
-        // Match in any part of user properties displayed on screen
+        // Capture user input, use it as search query
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                listAdapter.submitList(viewModel.onQuery("$query"))
+                viewModel.onQuery("$query")
                 searchView.clearFocus()
                 return true
             }
