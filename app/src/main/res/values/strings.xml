@@ -13,4 +13,5 @@
     <string name="status_initial">Start finding GitHub accounts by entering query on the search bar</string>
     <string name="status_loading">Fetching data, please wait</string>
     <string name="status_error">Request failed, please check network connection</string>
+    <string name="status_empty">No result were found</string>
 </resources>

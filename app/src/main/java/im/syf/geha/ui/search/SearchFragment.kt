@@ -68,6 +68,10 @@ class SearchFragment : Fragment() {
                 binding.recyclerView.adapter = statusAdapter
                 statusAdapter.onLoading()
             }
+            State.Empty -> {
+                binding.recyclerView.adapter = statusAdapter
+                statusAdapter.onEmpty()
+            }
             State.Error -> {
                 binding.recyclerView.adapter = statusAdapter
                 statusAdapter.onError()
