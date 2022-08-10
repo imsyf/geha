@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -56,10 +57,16 @@ class SearchFragment : Fragment() {
     }
 
     private fun render(state: State) {
+        binding.progressIndicator.isVisible = state is State.Loading
+
         when (state) {
             State.Initial -> {
                 binding.recyclerView.adapter = statusAdapter
                 statusAdapter.onInitial()
+            }
+            State.Loading -> {
+                binding.recyclerView.adapter = statusAdapter
+                statusAdapter.onLoading()
             }
             is State.Success -> {
                 binding.recyclerView.adapter = listAdapter

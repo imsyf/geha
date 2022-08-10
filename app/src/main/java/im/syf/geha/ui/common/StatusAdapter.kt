@@ -11,6 +11,7 @@ import im.syf.geha.R
 import im.syf.geha.databinding.ItemStatusBinding
 import im.syf.geha.ui.common.StatusAdapter.Status
 import im.syf.geha.ui.common.StatusAdapter.Status.Initial
+import im.syf.geha.ui.common.StatusAdapter.Status.Loading
 import im.syf.geha.ui.common.StatusAdapter.ViewHolder
 
 class StatusAdapter : ListAdapter<Status, ViewHolder>(DIFFER) {
@@ -27,11 +28,13 @@ class StatusAdapter : ListAdapter<Status, ViewHolder>(DIFFER) {
         @DrawableRes
         val drawableRes = when (status) {
             Initial -> R.drawable.ic_status_initial
+            Loading -> R.drawable.ic_status_loading
         }
 
         @StringRes
         val stringRes = when (status) {
             Initial -> R.string.status_initial
+            Loading -> R.string.status_loading
         }
 
         statusImage.setImageResource(drawableRes)
@@ -42,10 +45,15 @@ class StatusAdapter : ListAdapter<Status, ViewHolder>(DIFFER) {
         submitList(listOf(Initial))
     }
 
+    fun onLoading() {
+        submitList(listOf(Loading))
+    }
+
     class ViewHolder(val binding: ItemStatusBinding) : RecyclerView.ViewHolder(binding.root)
 
     sealed class Status {
         object Initial : Status()
+        object Loading : Status()
     }
 
     companion object {

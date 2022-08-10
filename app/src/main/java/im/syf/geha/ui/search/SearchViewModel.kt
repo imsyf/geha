@@ -16,6 +16,8 @@ class SearchViewModel(
     val state: LiveData<State> = _state
 
     fun onQuery(query: String) {
+        _state.value = State.Loading
+
         viewModelScope.launch {
             val users = gitHubService.searchUser(query).items
                 .map(UserDto::toUser)
@@ -29,6 +31,7 @@ class SearchViewModel(
 
     sealed class State {
         object Initial : State()
+        object Loading : State()
         data class Success(val users: List<User>) : State()
     }
 }
