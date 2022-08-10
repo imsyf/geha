@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import im.syf.geha.R
 import im.syf.geha.databinding.ItemStatusBinding
 import im.syf.geha.ui.common.StatusAdapter.Status
+import im.syf.geha.ui.common.StatusAdapter.Status.Error
 import im.syf.geha.ui.common.StatusAdapter.Status.Initial
 import im.syf.geha.ui.common.StatusAdapter.Status.Loading
 import im.syf.geha.ui.common.StatusAdapter.ViewHolder
@@ -29,12 +30,14 @@ class StatusAdapter : ListAdapter<Status, ViewHolder>(DIFFER) {
         val drawableRes = when (status) {
             Initial -> R.drawable.ic_status_initial
             Loading -> R.drawable.ic_status_loading
+            Error -> R.drawable.ic_status_error
         }
 
         @StringRes
         val stringRes = when (status) {
             Initial -> R.string.status_initial
             Loading -> R.string.status_loading
+            Error -> R.string.status_error
         }
 
         statusImage.setImageResource(drawableRes)
@@ -49,11 +52,16 @@ class StatusAdapter : ListAdapter<Status, ViewHolder>(DIFFER) {
         submitList(listOf(Loading))
     }
 
+    fun onError() {
+        submitList(listOf(Error))
+    }
+
     class ViewHolder(val binding: ItemStatusBinding) : RecyclerView.ViewHolder(binding.root)
 
     sealed class Status {
         object Initial : Status()
         object Loading : Status()
+        object Error : Status()
     }
 
     companion object {

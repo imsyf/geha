@@ -19,9 +19,13 @@ class SearchViewModel(
         _state.value = State.Loading
 
         viewModelScope.launch {
-            val users = gitHubService.searchUser(query).items
-                .map(UserDto::toUser)
-            _state.value = State.Success(users)
+            _state.value = try {
+                val users = gitHubService.searchUser(query).items
+                    .map(UserDto::toUser)
+                State.Success(users)
+            } catch (e: Exception) {
+                State.Error
+            }
         }
     }
 
@@ -32,6 +36,7 @@ class SearchViewModel(
     sealed class State {
         object Initial : State()
         object Loading : State()
+        object Error : State()
         data class Success(val users: List<User>) : State()
     }
 }

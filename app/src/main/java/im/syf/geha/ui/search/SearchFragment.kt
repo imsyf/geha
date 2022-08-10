@@ -68,6 +68,10 @@ class SearchFragment : Fragment() {
                 binding.recyclerView.adapter = statusAdapter
                 statusAdapter.onLoading()
             }
+            State.Error -> {
+                binding.recyclerView.adapter = statusAdapter
+                statusAdapter.onError()
+            }
             is State.Success -> {
                 binding.recyclerView.adapter = listAdapter
                 listAdapter.submitList(state.users)
