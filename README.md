@@ -22,7 +22,6 @@ Consume GitHub REST API, well, eventually.
 - Android resources annotation
 - Custom Android application class to hold shared instances
 - View binding
-- Data binding
 - RecyclerView: ListAdapter (with item diffing)
 - CoordinatorLayout: to coordinate scrolling behaviour between its children
 - TabLayout & ViewPager2

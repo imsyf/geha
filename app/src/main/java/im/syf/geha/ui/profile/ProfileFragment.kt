@@ -45,8 +45,13 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Bind data model to the layout
+        binding.bindData(viewModel.userProfile)
+    }
+
+    private fun FragmentProfileBinding.bindData(profile: UserProfile) {
         // Define tab items
-        val items: List<PageItem> = with(viewModel.userProfile) {
+        val items: List<PageItem> = with(profile) {
             listOf(
                 RepositoryPage(username, repository.toInt()),
                 FollowingPage(username, following.toInt()),
@@ -54,18 +59,24 @@ class ProfileFragment : Fragment() {
             )
         }
 
-        with(binding) {
-            // Bind data model to the layout
-            profile = viewModel.userProfile
+        // Set up view pager and tab layout
+        pager.adapter = ProfilePagerAdapter(this@ProfileFragment, items)
+        TabLayoutMediator(tabs, pager) { tab, position ->
+            tab.text = getString(items[position].title)
+        }.attach()
 
-            // Set up view pager and tab layout
-            pager.adapter = ProfilePagerAdapter(this@ProfileFragment, items)
-            TabLayoutMediator(tabs, pager) { tab, position ->
-                tab.text = getString(items[position].title)
-            }.attach()
-
-            shareButton.setOnClickListener { onShare(viewModel.userProfile) }
+        with(avatarImageView) {
+            setImageResource(profile.avatar)
+            contentDescription = getString(R.string.avatar_of_user, profile.username)
         }
+        repositoryTextView.text = profile.repository
+        followingTextView.text = profile.following
+        followersTextView.text = profile.followers
+        nameTextView.text = profile.name
+        companyTextView.text = profile.company
+        locationTextView.text = profile.location
+
+        shareButton.setOnClickListener { onShare(profile) }
     }
 
     private fun onShare(profile: UserProfile) {
