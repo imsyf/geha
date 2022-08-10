@@ -1,5 +1,7 @@
 package im.syf.geha.ui.profile.list
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -108,6 +110,9 @@ class ListFragment : Fragment() {
     }
 
     private fun open(repo: Repo) {
+        val url = Uri.parse(repo.url)
+        val intent = Intent(Intent.ACTION_VIEW, url)
+        startActivity(intent)
     }
 
     companion object {
