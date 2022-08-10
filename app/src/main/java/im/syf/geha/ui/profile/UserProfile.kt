@@ -1,28 +1,25 @@
 package im.syf.geha.ui.profile
 
-import androidx.annotation.DrawableRes
-import im.syf.geha.data.DummyUser
+import im.syf.geha.data.network.response.UserProfileDto
 
 data class UserProfile(
-    val id: Int,
     val username: String,
     val name: String,
+    val avatarUrl: String,
     val company: String,
     val location: String,
-    val repository: String,
-    val followers: String,
-    val following: String,
-    @DrawableRes val avatar: Int,
+    val repository: Int,
+    val followers: Int,
+    val following: Int,
 )
 
-fun DummyUser.toUserProfile(): UserProfile = UserProfile(
-    id,
-    username,
+fun UserProfileDto.toUserProfile(): UserProfile = UserProfile(
+    username = login,
     name,
+    avatarUrl = avatar_url,
     company,
     location,
-    repository,
+    repository = public_repos,
     followers,
     following,
-    avatar
 )

@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import im.syf.geha.Geha
@@ -29,7 +31,7 @@ class ProfileFragment : Fragment() {
         viewModelFactory {
             initializer {
                 val app = activity?.application as Geha
-                ProfileViewModel(args.user.id, app.dummyDataSource)
+                ProfileViewModel(args.username, app.gitHubService)
             }
         }
     }
@@ -49,10 +51,32 @@ class ProfileFragment : Fragment() {
     }
 
     private fun render(state: State) {
-        when (state) {
-            is State.Success -> {
-                // Bind data model to the layout
-                binding.bindData(state.userProfile)
+        with(binding) {
+            progressIndicator.isVisible = state is State.Loading
+
+            with(state !is State.Success) {
+                statusImage.isVisible = this
+                statusText.isVisible = this
+            }
+
+            with(state is State.Success) {
+                appBarLayout.isVisible = this
+                pager.isVisible = this
+            }
+
+            when (state) {
+                State.Loading -> {
+                    statusImage.setImageResource(R.drawable.ic_status_loading)
+                    statusText.setText(R.string.status_loading)
+                }
+                State.Error -> {
+                    statusImage.setImageResource(R.drawable.ic_status_error)
+                    statusText.setText(R.string.status_error)
+                }
+                is State.Success -> {
+                    // Bind data model to the layout
+                    bindData(state.userProfile)
+                }
             }
         }
     }
@@ -61,9 +85,9 @@ class ProfileFragment : Fragment() {
         // Define tab items
         val items: List<PageItem> = with(profile) {
             listOf(
-                RepositoryPage(username, repository.toInt()),
-                FollowingPage(username, following.toInt()),
-                FollowersPage(username, followers.toInt()),
+                RepositoryPage(username),
+                FollowingPage(username),
+                FollowersPage(username),
             )
         }
 
@@ -74,12 +98,12 @@ class ProfileFragment : Fragment() {
         }.attach()
 
         with(avatarImageView) {
-            setImageResource(profile.avatar)
+            load(profile.avatarUrl)
             contentDescription = getString(R.string.avatar_of_user, profile.username)
         }
-        repositoryTextView.text = profile.repository
-        followingTextView.text = profile.following
-        followersTextView.text = profile.followers
+        repositoryTextView.text = "${profile.repository}"
+        followingTextView.text = "${profile.following}"
+        followersTextView.text = "${profile.followers}"
         nameTextView.text = profile.name
         companyTextView.text = profile.company
         locationTextView.text = profile.location

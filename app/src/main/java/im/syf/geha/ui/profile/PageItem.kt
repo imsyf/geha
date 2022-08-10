@@ -10,21 +10,18 @@ sealed class PageItem(@StringRes val title: Int)
 
 class RepositoryPage(
     username: String,
-    itemCount: Int,
 ) : PageItem(R.string.repository) {
-    val repository = RepositoryListType(username, itemCount)
+    val repository = RepositoryListType(username)
 }
 
 class FollowingPage(
     username: String,
-    itemCount: Int,
 ) : PageItem(R.string.following) {
-    val following = FollowingListType(username, itemCount)
+    val following = FollowingListType(username)
 }
 
 class FollowersPage(
     username: String,
-    itemCount: Int,
 ) : PageItem(R.string.followers) {
-    val followers = FollowersListType(username, itemCount)
+    val followers = FollowersListType(username)
 }
