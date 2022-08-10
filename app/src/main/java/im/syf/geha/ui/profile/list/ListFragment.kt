@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import im.syf.geha.Geha
 import im.syf.geha.databinding.ViewListBinding
 import im.syf.geha.ui.common.StatusAdapter
+import im.syf.geha.ui.profile.ProfileFragmentDirections
 import im.syf.geha.ui.profile.list.ListViewModel.State
 import im.syf.geha.ui.search.User
 import im.syf.geha.ui.search.UserListAdapter
@@ -101,6 +103,8 @@ class ListFragment : Fragment() {
     }
 
     private fun navigate(user: User) {
+        val directions = ProfileFragmentDirections.toProfileFragment(user, user.username)
+        findNavController().navigate(directions)
     }
 
     private fun open(repo: Repo) {
