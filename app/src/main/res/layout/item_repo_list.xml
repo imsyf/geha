@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/name_text_view"
+            style="@style/TextAppearance.Geha.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@id/description_text_view"
+            app:layout_constraintEnd_toStartOf="@id/language_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/language_text_view"
+            style="@style/TextAppearance.Geha.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/name_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/name_text_view"
+            tools:text="Kotlin" />
+
+        <TextView
+            android:id="@+id/description_text_view"
+            style="@style/TextAppearance.Geha.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/star_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_text_view"
+            tools:text="@tools:sample/lorem/random" />
+
+        <ImageView
+            android:id="@+id/star_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@id/star_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/star_text_view" />
+
+        <TextView
+            android:id="@+id/star_text_view"
+            style="@style/TextAppearance.Geha.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/star_icon"
+            app:layout_constraintTop_toBottomOf="@id/description_text_view"
+            tools:text="80" />
+
+        <ImageView
+            android:id="@+id/watch_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_watch"
+            app:layout_constraintBottom_toBottomOf="@id/watch_text_view"
+            app:layout_constraintEnd_toStartOf="@id/watch_text_view"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/watch_text_view" />
+
+        <TextView
+            android:id="@+id/watch_text_view"
+            style="@style/TextAppearance.Geha.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/watch_icon"
+            app:layout_constraintTop_toTopOf="@id/star_text_view"
+            tools:text="80" />
+
+        <ImageView
+            android:id="@+id/fork_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_fork"
+            app:layout_constraintBottom_toBottomOf="@id/fork_text_view"
+            app:layout_constraintEnd_toStartOf="@id/fork_text_view"
+            app:layout_constraintTop_toTopOf="@id/fork_text_view" />
+
+        <TextView
+            android:id="@+id/fork_text_view"
+            style="@style/TextAppearance.Geha.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/star_text_view"
+            tools:text="80" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
