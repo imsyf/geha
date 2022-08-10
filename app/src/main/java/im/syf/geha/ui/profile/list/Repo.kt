@@ -5,8 +5,8 @@ import im.syf.geha.data.network.response.RepoDto
 
 data class Repo(
     val name: String,
-    val description: String,
-    val language: String,
+    val description: String?,
+    val language: String?,
     val star: Int,
     val watcher: Int,
     val fork: Int,

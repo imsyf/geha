@@ -101,12 +101,27 @@ class ProfileFragment : Fragment() {
             load(profile.avatarUrl)
             contentDescription = getString(R.string.avatar_of_user, profile.username)
         }
+
         repositoryTextView.text = "${profile.repository}"
         followingTextView.text = "${profile.following}"
         followersTextView.text = "${profile.followers}"
-        nameTextView.text = profile.name
-        companyTextView.text = profile.company
-        locationTextView.text = profile.location
+
+        with(profile.name != null) {
+            nameTextView.isVisible = this
+            if (this) nameTextView.text = profile.name
+        }
+
+        with(profile.company != null) {
+            companyIcon.isVisible = this
+            companyTextView.isVisible = this
+            if (this) companyTextView.text = profile.company
+        }
+
+        with(profile.name != null) {
+            locationIcon.isVisible = this
+            locationTextView.isVisible = this
+            if (this) locationTextView.text = profile.location
+        }
 
         shareButton.setOnClickListener { onShare(profile) }
     }
@@ -114,7 +129,7 @@ class ProfileFragment : Fragment() {
     private fun onShare(profile: UserProfile) {
         val intentBuilder = ShareCompat.IntentBuilder(requireContext())
             .setType("text/plain")
-            .setText(getString(R.string.share_text, profile.name, profile.username))
+            .setText(getString(R.string.share_text, profile.url))
 
         try {
             intentBuilder.startChooser()

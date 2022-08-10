@@ -2,6 +2,7 @@ package im.syf.geha.ui.profile.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import im.syf.geha.databinding.ItemRepoListBinding
@@ -30,7 +31,12 @@ class RepoListAdapter(
         fun bind(repo: Repo) = with(itemBinding) {
             nameTextView.text = repo.name
             descriptionTextView.text = repo.description
-            languageTextView.text = repo.language
+
+            with(repo.language != null) {
+                languageTextView.isVisible = this
+                if (this) languageTextView.text = repo.language
+            }
+
             starTextView.text = "${repo.star}"
             watchTextView.text = "${repo.watcher}"
             forkTextView.text = "${repo.fork}"
