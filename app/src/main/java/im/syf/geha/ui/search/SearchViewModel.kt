@@ -14,7 +14,7 @@ class SearchViewModel(
     private val users: List<User> = dataSource.dummyUsers
         .map(DummyUser::toUser)
 
-    private val _state = MutableLiveData<State>(State.Success(users))
+    private val _state = MutableLiveData<State>(State.Initial)
     val state: LiveData<State> = _state
 
     fun onQuery(query: String) {
@@ -30,10 +30,11 @@ class SearchViewModel(
     }
 
     fun reset() {
-        _state.value = State.Success(users)
+        _state.value = State.Initial
     }
 
     sealed class State {
+        object Initial : State()
         data class Success(val users: List<User>) : State()
     }
 }

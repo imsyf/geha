@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.databinding.ViewListBinding
+import im.syf.geha.ui.common.StatusAdapter
 import im.syf.geha.ui.search.SearchViewModel.State
 
 class SearchFragment : Fragment() {
@@ -36,6 +37,7 @@ class SearchFragment : Fragment() {
     }
 
     private val listAdapter = UserListAdapter(::navigate)
+    private val statusAdapter = StatusAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +57,10 @@ class SearchFragment : Fragment() {
 
     private fun render(state: State) {
         when (state) {
+            State.Initial -> {
+                binding.recyclerView.adapter = statusAdapter
+                statusAdapter.onInitial()
+            }
             is State.Success -> {
                 binding.recyclerView.adapter = listAdapter
                 listAdapter.submitList(state.users)
