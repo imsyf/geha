@@ -30,12 +30,10 @@ class UserListAdapter(
 
         fun bind(user: User) = with(itemBinding) {
             with(avatarImageView) {
-                setImageResource(user.avatar)
-                contentDescription = context.getString(R.string.avatar_of_user, user.name)
+                contentDescription = context.getString(R.string.avatar_of_user, user.username)
             }
-            nameTextView.text = user.name
             usernameTextView.text = user.username
-            locationTextView.text = user.location
+            accountTypeTextView.text = user.accountType
         }
     }
 }

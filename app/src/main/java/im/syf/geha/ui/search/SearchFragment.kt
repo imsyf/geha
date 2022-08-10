@@ -31,7 +31,7 @@ class SearchFragment : Fragment() {
         viewModelFactory {
             initializer {
                 val app = activity?.application as Geha
-                SearchViewModel(app.dummyDataSource)
+                SearchViewModel(app.gitHubService)
             }
         }
     }

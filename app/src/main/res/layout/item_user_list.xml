@@ -13,61 +13,34 @@
 
         <ImageView
             android:id="@+id/avatar_image_view"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/name_text_view"
+            android:id="@+id/username_text_view"
             style="@style/TextAppearance.Geha.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:padding="8dp"
-            app:layout_constraintBottom_toTopOf="@id/username_text_view"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@id/account_type_text_view"
             app:layout_constraintStart_toEndOf="@id/avatar_image_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/full_names" />
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="@tools:sample/first_names" />
 
         <TextView
-            android:id="@+id/username_text_view"
+            android:id="@+id/account_type_text_view"
             style="@style/TextAppearance.Geha.Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:padding="8dp"
-            app:layout_constraintBottom_toTopOf="@id/location_text_view"
-            app:layout_constraintStart_toEndOf="@id/avatar_image_view"
-            app:layout_constraintTop_toBottomOf="@id/name_text_view"
-            tools:text="@tools:sample/first_names" />
-
-        <ImageView
-            android:id="@+id/location_icon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="6dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_location_outline"
-            app:layout_constraintBottom_toBottomOf="@id/location_text_view"
-            app:layout_constraintStart_toStartOf="@id/username_text_view"
-            app:layout_constraintTop_toTopOf="@id/location_text_view" />
-
-        <TextView
-            android:id="@+id/location_text_view"
-            style="@style/TextAppearance.Geha.Body"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/location_icon"
+            app:layout_constraintStart_toStartOf="@id/username_text_view"
             app:layout_constraintTop_toBottomOf="@id/username_text_view"
-            tools:text="@tools:sample/cities" />
+            tools:text="@tools:sample/lorem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
