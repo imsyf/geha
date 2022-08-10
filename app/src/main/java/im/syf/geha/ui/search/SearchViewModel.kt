@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import im.syf.geha.data.network.GitHubService
 import im.syf.geha.data.network.response.UserDto
+import im.syf.geha.ui.common.User
+import im.syf.geha.ui.common.toUser
 import kotlinx.coroutines.launch
 
 class SearchViewModel(

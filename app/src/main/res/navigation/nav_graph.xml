@@ -22,7 +22,7 @@
 
         <argument
             android:name="user"
-            app:argType="im.syf.geha.ui.search.User" />
+            app:argType="im.syf.geha.ui.common.User" />
 
         <argument
             android:name="username"

@@ -20,8 +20,8 @@ import im.syf.geha.databinding.ViewListBinding
 import im.syf.geha.ui.common.StatusAdapter
 import im.syf.geha.ui.profile.ProfileFragmentDirections
 import im.syf.geha.ui.profile.list.ListViewModel.State
-import im.syf.geha.ui.search.User
-import im.syf.geha.ui.search.UserListAdapter
+import im.syf.geha.ui.common.User
+import im.syf.geha.ui.common.UserListAdapter
 
 class ListFragment : Fragment() {
 

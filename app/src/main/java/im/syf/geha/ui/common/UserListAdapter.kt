@@ -1,4 +1,4 @@
-package im.syf.geha.ui.search
+package im.syf.geha.ui.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

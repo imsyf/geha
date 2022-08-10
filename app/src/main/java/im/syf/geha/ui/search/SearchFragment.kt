@@ -21,6 +21,8 @@ import im.syf.geha.Geha
 import im.syf.geha.R
 import im.syf.geha.databinding.ViewListBinding
 import im.syf.geha.ui.common.StatusAdapter
+import im.syf.geha.ui.common.User
+import im.syf.geha.ui.common.UserListAdapter
 import im.syf.geha.ui.search.SearchViewModel.State
 
 class SearchFragment : Fragment() {

@@ -1,4 +1,4 @@
-package im.syf.geha.ui.search
+package im.syf.geha.ui.common
 
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil

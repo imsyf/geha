@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import im.syf.geha.data.network.GitHubService
 import im.syf.geha.data.network.response.RepoDto
 import im.syf.geha.data.network.response.UserDto
-import im.syf.geha.ui.search.User
-import im.syf.geha.ui.search.toUser
+import im.syf.geha.ui.common.User
+import im.syf.geha.ui.common.toUser
 import kotlinx.coroutines.launch
 
 class ListViewModel(
