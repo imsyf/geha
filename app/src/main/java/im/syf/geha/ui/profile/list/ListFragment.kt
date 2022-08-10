@@ -61,8 +61,6 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerView.setHasFixedSize(true)
-
         /**
          * Loading indicator looks weird when it's right under the tab layout, so
          * move it to the bottom of the screen instead

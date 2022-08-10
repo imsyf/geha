@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.core.app.ShareCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.google.android.material.snackbar.Snackbar
@@ -31,7 +33,7 @@ class ProfileFragment : Fragment() {
         viewModelFactory {
             initializer {
                 val app = activity?.application as Geha
-                ProfileViewModel(args.username, app.gitHubService)
+                ProfileViewModel(args.username, app.gitHubService, app.userProfileDao)
             }
         }
     }
@@ -47,6 +49,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.isProfileSaved.observe(viewLifecycleOwner) {
+            with(binding) {
+                saveButton.isVisible = !it
+                deleteButton.isVisible = it
+            }
+        }
+
         viewModel.state.observe(viewLifecycleOwner, ::render)
     }
 
@@ -123,8 +133,30 @@ class ProfileFragment : Fragment() {
             if (this) locationTextView.text = profile.location
         }
 
+        saveButton.setOnClickListener {
+            viewModel.save(profile)
+            onSavedListChanged()
+        }
+
+        deleteButton.setOnClickListener {
+            viewModel.delete(profile)
+            onSavedListChanged()
+        }
+
         shareButton.setOnClickListener { onShare(profile) }
     }
+
+    private fun onSavedListChanged() {
+        binding.snack(R.string.saved_list_changed)
+            .setAction(R.string.see_result) {
+                findNavController().navigate(ProfileFragmentDirections.toSavedFragment())
+            }
+            .show()
+    }
+
+    private fun FragmentProfileBinding.snack(@StringRes resId: Int): Snackbar = Snackbar.make(
+        root, resId, Snackbar.LENGTH_INDEFINITE
+    )
 
     private fun onShare(profile: UserProfile) {
         val intentBuilder = ShareCompat.IntentBuilder(requireContext())
@@ -134,7 +166,7 @@ class ProfileFragment : Fragment() {
         try {
             intentBuilder.startChooser()
         } catch (e: ActivityNotFoundException) {
-            Snackbar.make(binding.root, R.string.sharing_failed, Snackbar.LENGTH_INDEFINITE)
+            binding.snack(R.string.sharing_failed)
                 .setAction(getString(R.string.dismiss)) {}
                 .show()
         }

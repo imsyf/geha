@@ -2,6 +2,7 @@ package im.syf.geha.ui.common
 
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
+import im.syf.geha.data.db.UserProfileEntity
 import im.syf.geha.data.network.response.UserDto
 import kotlinx.parcelize.Parcelize
 
@@ -26,6 +27,12 @@ data class User(
 
 fun UserDto.toUser(): User = User(
     username = login,
+    avatarUrl = avatar_url,
+    accountType = type,
+)
+
+fun UserProfileEntity.toUser(): User = User(
+    username = username,
     avatarUrl = avatar_url,
     accountType = type,
 )

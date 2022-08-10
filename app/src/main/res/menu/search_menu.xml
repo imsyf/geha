@@ -10,6 +10,12 @@
         app:showAsAction="collapseActionView|ifRoom" />
 
     <item
+        android:id="@+id/saved_menu_item"
+        android:icon="@drawable/ic_save"
+        android:title="@string/saved_profile"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/toggle_theme_menu_item"
         android:icon="@drawable/ic_settings"
         android:title="@string/toggle_theme"

@@ -1,5 +1,6 @@
 package im.syf.geha.ui.profile
 
+import im.syf.geha.data.db.UserProfileEntity
 import im.syf.geha.data.network.response.UserProfileDto
 
 data class UserProfile(
@@ -12,6 +13,20 @@ data class UserProfile(
     val followers: Int,
     val following: Int,
     val url: String,
+    val type: String,
+)
+
+fun UserProfile.toUserProfileEntity(): UserProfileEntity = UserProfileEntity(
+    username,
+    name,
+    avatar_url = avatarUrl,
+    company,
+    location,
+    repository,
+    followers,
+    following,
+    url,
+    type,
 )
 
 fun UserProfileDto.toUserProfile(): UserProfile = UserProfile(
@@ -24,4 +39,18 @@ fun UserProfileDto.toUserProfile(): UserProfile = UserProfile(
     followers,
     following,
     url = html_url,
+    type,
+)
+
+fun UserProfileEntity.toUserProfile(): UserProfile = UserProfile(
+    username,
+    name,
+    avatarUrl = avatar_url,
+    company,
+    location,
+    repository,
+    followers,
+    following,
+    url,
+    type,
 )

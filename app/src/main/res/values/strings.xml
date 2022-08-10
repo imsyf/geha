@@ -14,5 +14,9 @@
     <string name="status_loading">Fetching data, please wait</string>
     <string name="status_error">Request failed, please check network connection</string>
     <string name="status_empty">No result were found</string>
+    <string name="saved_profile">Saved profile</string>
     <string name="toggle_theme">Toggle theme mode</string>
+    <string name="delete">Delete</string>
+    <string name="saved_list_changed">Saved list changed</string>
+    <string name="see_result">See result</string>
 </resources>

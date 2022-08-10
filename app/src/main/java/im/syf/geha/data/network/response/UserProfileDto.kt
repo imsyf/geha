@@ -13,4 +13,5 @@ data class UserProfileDto(
     val followers: Int,
     val following: Int,
     val html_url: String,
+    val type: String,
 )

@@ -116,6 +116,10 @@ class SearchFragment : Fragment() {
                             viewModel.toggleThemeMode(requireContext())
                             true
                         }
+                        R.id.saved_menu_item -> {
+                            findNavController().navigate(SearchFragmentDirections.toSavedFragment())
+                            true
+                        }
                         else -> false
                     }
                 }
