@@ -1,9 +1,12 @@
 package im.syf.geha.ui.search
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import im.syf.geha.data.SettingsDataStore
 import im.syf.geha.data.network.GitHubService
 import im.syf.geha.data.network.response.UserDto
 import im.syf.geha.ui.common.User
@@ -12,10 +15,13 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val gitHubService: GitHubService,
+    private val settingsDataStore: SettingsDataStore,
 ) : ViewModel() {
 
     private val _state = MutableLiveData<State>(State.Initial)
     val state: LiveData<State> = _state
+
+    val darkModePreference: LiveData<Boolean> = settingsDataStore.preferenceFlow.asLiveData()
 
     fun onQuery(query: String) {
         _state.value = State.Loading
@@ -29,6 +35,13 @@ class SearchViewModel(
             } catch (e: Exception) {
                 State.Error
             }
+        }
+    }
+
+    fun toggleThemeMode(context: Context) {
+        viewModelScope.launch {
+            val enable = darkModePreference.value?.not() ?: true
+            settingsDataStore.setThemeMode(context, enable)
         }
     }
 

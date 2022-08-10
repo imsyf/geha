@@ -7,6 +7,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -34,7 +37,7 @@ class SearchFragment : Fragment() {
         viewModelFactory {
             initializer {
                 val app = activity?.application as Geha
-                SearchViewModel(app.gitHubService)
+                SearchViewModel(app.gitHubService, app.settingsDataStore)
             }
         }
     }
@@ -54,7 +57,11 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupOptionsMenu()
-        binding.recyclerView.setHasFixedSize(true)
+
+        viewModel.darkModePreference.observe(viewLifecycleOwner) { enabled ->
+            setDefaultNightMode(if (enabled) MODE_NIGHT_YES else MODE_NIGHT_NO)
+        }
+
         viewModel.state.observe(viewLifecycleOwner, ::render)
     }
 
@@ -103,6 +110,10 @@ class SearchFragment : Fragment() {
                     return when (menuItem.itemId) {
                         R.id.search_menu_item -> {
                             setupSearchView(menuItem)
+                            true
+                        }
+                        R.id.toggle_theme_menu_item -> {
+                            viewModel.toggleThemeMode(requireContext())
                             true
                         }
                         else -> false
