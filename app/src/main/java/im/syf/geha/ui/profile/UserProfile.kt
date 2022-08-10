@@ -12,10 +12,7 @@ data class UserProfile(
     val followers: Int,
     val following: Int,
     val url: String,
-) {
-    val alias: String
-        get() = if (name == null) username else "$name ($username)"
-}
+)
 
 fun UserProfileDto.toUserProfile(): UserProfile = UserProfile(
     username = login,
