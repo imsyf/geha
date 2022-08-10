@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import im.syf.geha.R
 import im.syf.geha.databinding.ItemUserListBinding
 
@@ -30,6 +31,7 @@ class UserListAdapter(
 
         fun bind(user: User) = with(itemBinding) {
             with(avatarImageView) {
+                load(user.avatarUrl)
                 contentDescription = context.getString(R.string.avatar_of_user, user.username)
             }
             usernameTextView.text = user.username
